@@ -16,6 +16,7 @@
     staticcheck.enable = true;
 
     alejandra.enable = true;
+    commitizen.enable = true;
   };
 
   env.GREET = "filesorter in go";
