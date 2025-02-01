@@ -1,11 +1,11 @@
 {
   pkgs,
   lib,
-  config,
-  inputs,
   ...
-}: {
+}:
+{
   languages.go.enable = true;
+  languages.nix.enable = true;
 
   git-hooks.hooks = {
     gofmt.enable = true;
@@ -15,18 +15,14 @@
     revive.enable = true;
     staticcheck.enable = true;
 
-    alejandra.enable = true;
+    nixfmt-rfc-style.enable = true;
+    statix.enable = true;
+    deadnix.enable = true;
     commitizen.enable = true;
   };
 
-  env.GREET = "filesorter in go";
-
   enterShell = ''
-    echo hello from $GREET
-  '';
-
-  enterTest = ''
-    echo "Running tests"
+    echo hello from filesorter in go
   '';
 
   outputs = {
