@@ -25,6 +25,8 @@
     echo hello from filesorter in go
   '';
 
+  packages = [ pkgs.nil ];
+
   outputs = {
     filesort = pkgs.buildGoModule {
       pname = "filesort";
