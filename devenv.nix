@@ -13,6 +13,13 @@
     govet.enable = true;
     revive.enable = true;
     staticcheck.enable = true;
+    govulncheck = {
+      enable = true;
+      name = "govulncheck";
+      entry = "go run golang.org/x/vuln/cmd/govulncheck@latest ./...";
+      files = "\\.go$";
+      pass_filenames = false;
+    };
 
     nixfmt-rfc-style.enable = true;
     statix.enable = true;
