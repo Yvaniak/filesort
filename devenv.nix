@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   ...
 }:
 {
@@ -26,21 +25,4 @@
   '';
 
   packages = [ pkgs.nil ];
-
-  outputs = {
-    filesort = pkgs.buildGoModule {
-      pname = "filesort";
-      version = "0.1.0";
-
-      src = ./.;
-
-      vendorHash = null;
-
-      meta = {
-        description = "simple filesorter in go for learning";
-        homepage = "https://github.com/Yvaniak/filesort";
-        licence = lib.licences.gpl3Plus;
-      };
-    };
-  };
 }
