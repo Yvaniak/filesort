@@ -12,6 +12,7 @@ import (
 
 func getDirname() string {
 	var root string
+	//TODO: get argument or working directory instead by default
 	fmt.Print("Where to sort ? : ")
 	num, err := fmt.Scanf("%s", &root)
 	if err != nil {
