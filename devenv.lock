@@ -17,14 +17,11 @@
       }
     },
     "devenvs": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
       "locked": {
-        "lastModified": 1739642440,
+        "lastModified": 1739642894,
         "owner": "yvaniak",
         "repo": "devenvs",
-        "rev": "f2237b121439b188c8b91c1c722831a05c8a2332",
+        "rev": "4c6776aa4d906e169d596493a857fbff05d0915c",
         "type": "github"
       },
       "original": {
@@ -91,21 +88,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1739446958,
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "2ff53fe64443980e139eaa286017f53f88336dd0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1733477122,
         "owner": "cachix",
         "repo": "devenv-nixpkgs",
@@ -124,7 +106,7 @@
         "devenv": "devenv",
         "devenvs": "devenvs",
         "git-hooks": "git-hooks",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "pre-commit-hooks": [
           "git-hooks"
         ]
