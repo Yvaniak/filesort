@@ -4,7 +4,7 @@
 }:
 {
   imports = [
-    inputs.devenvs.homeManagerModules.devenvs.default
+    inputs.devenvs.homeManagerModules.default
   ];
   go.enable = true;
   nix.enable = true;
