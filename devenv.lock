@@ -18,10 +18,10 @@
     },
     "devenvs": {
       "locked": {
-        "lastModified": 1739658070,
+        "lastModified": 1739703762,
         "owner": "yvaniak",
         "repo": "devenvs",
-        "rev": "0909e4866ade941234ae96a5c638a9fb6db762fb",
+        "rev": "b515a8d95aad346ec0dadf2412a9d7cc4d7eb9a7",
         "type": "github"
       },
       "original": {
