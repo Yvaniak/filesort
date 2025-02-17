@@ -1,43 +1,56 @@
 {
-  description = "A very basic flake";
+  description = "simple filesorter, which goal is for me to learn go.";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
   outputs =
-    { self, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import inputs.nixpkgs {
-        inherit system;
-      };
-    in
-    {
-
-      packages.x86_64-linux.hello = pkgs.buildGoModule rec {
-        pname = "filesort";
-        version = "1.0.0";
-
-        src = ./.;
-
-        vendorHash = null;
-
-        ldflags = [
-          "-s"
-          "-w"
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports =
+        [
         ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+      perSystem =
+        {
+          self',
+          pkgs,
+          lib,
+          ...
+        }:
+        {
+          packages.filesort = pkgs.buildGoModule rec {
+            pname = "filesort";
+            inherit ((lib.trivial.importTOML ./.cz.toml).tool.commitizen) version;
 
-        meta = {
-          description = "Simple filesorter in go for learning";
-          homepage = "https://github.com/Yvaniak/filesort";
-          changelog = "https://github.com/Yvaniak/filesort/blob/${src.rev}/CHANGELOG.md";
-          license = pkgs.lib.licenses.gpl3Only;
-          mainProgram = "filesort";
+            src = ./.;
+
+            vendorHash = null;
+
+            ldflags = [
+              "-s"
+              "-w"
+            ];
+
+            meta = {
+              description = "Simple filesorter in go for learning";
+              homepage = "https://github.com/Yvaniak/filesort";
+              changelog = "https://github.com/Yvaniak/filesort/blob/${src.rev}/CHANGELOG.md";
+              license = pkgs.lib.licenses.gpl3Only;
+              mainProgram = "filesort";
+            };
+          };
+          packages.default = self'.packages.filesort;
         };
-      };
-
-      packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
-
+      flake =
+        {
+        };
     };
 }
