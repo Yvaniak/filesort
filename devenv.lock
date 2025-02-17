@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "advisory-db": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739520703,
+        "owner": "rustsec",
+        "repo": "advisory-db",
+        "rev": "ddccfe8aced779f7b54d27bbe7e122ecb1dda33a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rustsec",
+        "repo": "advisory-db",
+        "type": "github"
+      }
+    },
     "devenv": {
       "locked": {
         "dir": "src/modules",
@@ -17,11 +32,14 @@
       }
     },
     "devenvs": {
+      "inputs": {
+        "advisory-db": "advisory-db"
+      },
       "locked": {
-        "lastModified": 1739703762,
+        "lastModified": 1739739599,
         "owner": "yvaniak",
         "repo": "devenvs",
-        "rev": "b515a8d95aad346ec0dadf2412a9d7cc4d7eb9a7",
+        "rev": "2d1a2370ec94aa3deea7057690a7d32eaa213ac7",
         "type": "github"
       },
       "original": {
