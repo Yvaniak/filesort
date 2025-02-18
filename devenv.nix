@@ -7,5 +7,10 @@
     inputs.devenvs.devenvModules.default
   ];
   go.enable = true;
-  nix.enable = true;
+  go.tests.enable = true;
+  nix = {
+    enable = true;
+    tests.enable = true;
+    flake.enable = true;
+  };
 }
