@@ -12,6 +12,6 @@ clean:
 run: bin/${BIN}
 	./bin/${BIN}
 
-all: bin/filesort
+all: bin/${BIN}
 
 .PHONY: clean all run
