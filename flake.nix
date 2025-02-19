@@ -4,14 +4,15 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    devenvs.url = "github:yvaniak/devenvs";
   };
 
   outputs =
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports =
-        [
-        ];
+      imports = [
+        inputs.devenvs.inputs.devenv.flakeModule
+      ];
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -48,9 +49,20 @@
             };
           };
           packages.default = self'.packages.filesort;
+
+          devenv.shells.default = {
+            imports = [ inputs.devenvs.flakeModule ];
+            go.enable = true;
+            go.tests.enable = true;
+            nix = {
+              enable = true;
+              tests.enable = true;
+              flake.enable = true;
+            };
+
+          };
         };
-      flake =
-        {
-        };
+      flake = {
+      };
     };
 }
