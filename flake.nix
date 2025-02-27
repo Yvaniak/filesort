@@ -12,6 +12,7 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.devenvs.inputs.devenv.flakeModule
+        inputs.devenvs.flakeModule
       ];
       systems = [
         "x86_64-linux"
@@ -24,6 +25,7 @@
           self',
           pkgs,
           lib,
+          config,
           ...
         }:
         {
@@ -51,13 +53,16 @@
           packages.default = self'.packages.filesort;
 
           devenv.shells.default = {
-            imports = [ inputs.devenvs.flakeModule ];
-            go.enable = true;
-            go.tests.enable = true;
-            nix = {
-              enable = true;
-              tests.enable = true;
-              flake.enable = true;
+            devenvs = {
+              go.enable = true;
+              nix = {
+                enable = true;
+                check.enable = true;
+                check.package = config.packages.default;
+                flake.enable = true;
+              };
+              tools.just.enable = true;
+              tools.just.pre-commit.enable = true;
             };
 
           };
