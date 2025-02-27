@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     devenvs.url = "github:yvaniak/devenvs";
+    devenvs.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
