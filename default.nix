@@ -1,13 +1,16 @@
 {
-  pkgs,
-  lib,
+  pkgs ? import <nixpkgs> { },
+  lib ? pkgs.lib,
   ...
 }:
 pkgs.buildGoModule rec {
   pname = "filesort";
   inherit ((lib.trivial.importTOML ./.cz.toml).tool.commitizen) version;
 
-  src = ./.;
+  src = lib.fileset.toSource {
+    root = ./.;
+    fileset = lib.fileset.union ./filesort.go ./go.mod;
+  };
 
   vendorHash = null;
 
