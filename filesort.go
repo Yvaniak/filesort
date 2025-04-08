@@ -82,8 +82,15 @@ func move(file string, dossier string) {
 		log.Fatal(err)
 	}
 
-	inputFile.Close()
-	outputFile.Close()
+	err = inputFile.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = outputFile.Close()
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	err = os.Remove(file)
 	if err != nil {
